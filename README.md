@@ -59,6 +59,12 @@ L_GCN = λ₁ * L_CD + λ₂ * L_Lap + λ₃ * L_NC + λ₄ * L_EG
 
 ## Installation
 
+Firstly do: 
+```bash
+!pip install numpy==1.23.5 --force-reinstall
+
+```
+
 PyTorch == 1.11.0
 
 Python == 3.9.12
@@ -72,12 +78,6 @@ pyvista == 0.36.
 trimesh == 3.12.6
 
 ## Experiments
-
-Firstly do: 
-```bash
-!pip install numpy==1.23.5 --force-reinstall
-
-```
 
 
 
