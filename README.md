@@ -50,46 +50,6 @@ $$
 \mathcal{L}_{G C N}=\lambda_1 \mathcal{L}_{C D}+\lambda_2 \mathcal{L}_{\text {Lap }}+\lambda_3 \mathcal{L}_{N C}+\lambda_4 \mathcal{L}_{E G}
 $$
 
-\section*{Optimization of Segmentation Network}
-
-To jointly train the U-shape neural networks and the Graph Convolutional Network (GCN), various loss functions are adopted to optimize the corresponding objectives.
-
-\begin{itemize}
-    \item \textbf{Image loss} drives the U-shape voxel-based segmentation network. It combines the SoftDice loss and the cross-entropy loss to encourage accurate segmentation in the voxel space.
-    
-    \item \textbf{Mesh loss} optimizes the GCN using the following components:
-    \begin{itemize}
-        \item Chamfer Distance Loss
-        \item Laplacian Smoothing Loss
-        \item Normal Consistency Loss
-        \item Edge Length Loss
-    \end{itemize}
-\end{itemize}
-
-Chamfer Distance Loss dominates the optimization of the GCN. It measures the bidirectional distance between two point clouds---the predicted and ground-truth vertex sets---as:
-
-\[
-\mathcal{L}_{CD}(\mathcal{V}_1, \mathcal{V}_2) = \frac{1}{|\mathcal{V}_1|} \sum_{x \in \mathcal{V}_1} \min_{y \in \mathcal{V}_2} \|x - y\|_2^2 
-+ \frac{1}{|\mathcal{V}_2|} \sum_{y \in \mathcal{V}_2} \min_{x \in \mathcal{V}_1} \|x - y\|_2^2
-\]
-
-Laplacian Smoothing Loss \( \mathcal{L}_{\text{Lap}} \) regularizes the smoothness of the mesh by penalizing vertex deviations from the mean of their neighbors.
-
-Normal Consistency Loss ensures that adjacent faces maintain similar normals, which encourages surface smoothness. It is defined as:
-
-\[
-\mathcal{L}_{NC} = \sum_{e \in \mathcal{E}} \left( 1 - \cos(n_0, n_1) \right)
-\]
-
-Edge Loss \( \mathcal{L}_{EG} \) penalizes the lengths of edges to prevent outlier vertices and overly stretched faces.
-
-The total GCN loss function is:
-
-\[
-\mathcal{L}_{GCN} = \lambda_1 \mathcal{L}_{CD} + \lambda_2 \mathcal{L}_{\text{Lap}} + \lambda_3 \mathcal{L}_{NC} + \lambda_4 \mathcal{L}_{EG}
-\]
-
-This multi-component loss design ensures that the network produces both accurate voxel-level segmentations and geometrically coherent mesh outputs.
 
 
 ## Installation
