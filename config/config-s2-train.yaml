@@ -22,7 +22,7 @@ network:
     Gseg:
       defin_path: './models/GraphSeg.py'
       defin_parm: {coords_dim: 3, hidden_dim: 192, feats_dims: [128, 64, 32]}
-      cur_params: null
+      cur_params: "./checkpoints/Tag-GeometrySegmentation-CoronaryArtery-s1.pth"
       int_method: kaiming
       optimizers: {type: Adam, lr: 1.0e-4, cur_params: null}
       schedulers: {type: CosineAnnealingLR, half_cycle: 200, eta_min: 1.0e-6}
