@@ -16,18 +16,21 @@ Segmentation of the coronary artery, angiography (CCTA). geometry-based segmenta
 > Fig.1  Fine Mesh Annotation for Geometrical Regularization
 
 ## Graph Convolutional Network
-Graph Convolutional Network: a sphere mesh $\mathcal{G}=\{\mathcal{V}, \mathcal{E}\}$ with 162 vertices and 480 edges is initialized as the input of the GCN, where $\mathcal{V}$ denotes the set of vertices and $\mathcal{E}$ represents the set of edges. The mesh with $N$ vertices $v_i \in \mathcal{V}$ in the GCN has its adjacency matrix $\mathbf{A} \in \mathbb{R}^{N \times N}$ and diagonal degree
-$\hat{\mathbf{D}}_{i i}=\sum_{j=0} \hat{\mathbf{A}}_{i j}$, where $\hat{\mathbf{A}}=\mathbf{A}+\mathbf{I}$. The graph convolution is executed as Eq. 1.
 
-$$
-\mathcal{V}^{\prime}=\hat{\mathcal{D}}^{-1 / 2} \hat{\mathcal{A}} \hat{\mathcal{D}}^{-1 / 2} \mathcal{V} \Theta
-$$
+Graph Convolutional Network: A sphere mesh `𝒢 = {𝒱, ℰ}` with 162 vertices and 480 edges is initialized as the input of the GCN, where `𝒱` denotes the set of vertices and `ℰ` represents the set of edges. The mesh with `N` vertices `vᵢ ∈ 𝒱` in the GCN has its adjacency matrix `𝐀 ∈ ℝⁿˣⁿ` and diagonal degree matrix `𝐃̂`, where:
 
-where $\Theta$ represents the parameters of the neural network and $\mathbf{V} \in \mathbb{R}^{N \times C}$ symbolizes the feature vector with $C$ dimension for each node $v_i$. In addition, the residual block is applied to predict the deformation of the mesh instead of predicting the vertices location of the target mesh directly, which simplifies the difficulty of training. Furthermore, the initial sphere is easily deformed but lacks enough details of the coronary artery. Graph unpooling is implemented in our GCN at stage I, dividing one triangular face into four parts along the midpoint of each side and assigning the mean feature vector of one edge to the node of the midpoint. It supplements more vertices and edges, retouching the mesh of the coronary artery. The LNS [24] strategy is performed to project extracted image features into the mesh space.
+```
+D̂_ii = ∑_{j=0} Â_ij,  where Â = A + I
+```
+
+The graph convolution is executed as in Eq. 1:
+
+```
+V′ = D̂^(-1/2) · Â · D̂^(-1/2) · V · Θ
+```
 
 
-
-
+where $\Theta$ represents the parameters of the neural network and $\mathbf{V} \in \mathbb{R}^{N \times C}$ symbolizes the feature vector with $C$ dimension for each node $v_i$. In addition, the residual block is applied to predict the deformation of the mesh instead of predicting the vertices location of the target mesh directly, which simplifies the difficulty of training. Furthermore, the initial sphere is easily deformed but lacks enough details of the coronary artery. Graph unpooling is implemented in our GCN at stage I, dividing one triangular face into four parts along the midpoint of each side and assigning the mean feature vector of one edge to the node of the midpoint. It supplements more vertices and edges, retouching the mesh of the coronary artery. 
 
 
 ## Optimization of Segmentation Network
