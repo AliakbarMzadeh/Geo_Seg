@@ -29,12 +29,12 @@ where $\Theta$ represents the parameters of the neural network and $\mathbf{V} \
 ## Optimization of Segmentation Network: 
 Optimization of Segmentation Network: For jointly training the U-shape neural networks and GCN, various loss functions are adopted to optimize them. First, image loss is mainly driving the U-shape network under the voxel-based segmentation framework, consisting of SoftDice loss and cross-entropy loss. Second, mesh loss optimizes the GCN, including chamfer distance loss, laplacian smoothing, normal consistency loss and edge loss. The chamfer distance dominates the optimization of the GCN, which measures the distance of two point clouds between the prediction and ground truth as Eq.2, guiding the deformation of the mesh.
 
-$
-\begin{aligned}
+$$
+
 \mathcal{L}_{C D}\left(\mathcal{V}_1, \mathcal{V}_2\right) & =\frac{1}{\left|\mathcal{V}_1\right|} \sum_{x \in \mathcal{V}_1} \min _{y \in \mathcal{V}_2}\|x-y\|_2^2 \\
 & +\frac{1}{\left|\mathcal{V}_2\right|} \sum_{y \in \mathcal{V}_2} \min _{x \in \mathcal{V}_1}\|x-y\|_2^2
-\end{aligned}
-$
+
+$$
 
 
 Laplacian smoothing (Lap) and normal consistency loss (NC) are utilized to regularize the smoothness of the mesh. Laplacian smoothing $\mathcal{L}_{\text {Lap }}$ computes the uniform weights of all edges connected at a vertex. Normal consistency loss computes the angle of the normal $n_0$ and $n_1$ for each pair of neighboring faces as Eq. 3 .
