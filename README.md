@@ -67,11 +67,19 @@ torch-geometric == 2.1.0
 
 pytorch3d == 0.7.0
 
-pyvista == 0.36.1
+pyvista == 0.36.
 
 trimesh == 3.12.6
 
 ## Experiments
+
+Firstly do: 
+```bash
+!pip install numpy==1.23.5 --force-reinstall
+
+```
+
+
 
 train on stage I:
 
