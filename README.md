@@ -12,7 +12,7 @@ Segmentation of the coronary artery, angiography (CCTA). geometry-based segmenta
 > Fig.1  geometry-based cascaded segmentation network for generating mesh of the coronary artery.
 
 
-![workflow of our geometry-based Cascaded Neural Network](./images/table.jpg)
+![workflow of our geometry-based Cascaded Neural Network](./images/Table.ong)
 > Fig.1  Fine Mesh Annotation for Geometrical Regularization
 
 ## Graph Convolutional Network
