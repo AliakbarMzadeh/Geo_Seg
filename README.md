@@ -1,4 +1,4 @@
-# Segmentation and Vascular Vectorization for Coronary Artery by Geometry-based Cascaded Neural Network
+# Segmentation for Coronary Artery 
 
 
 
